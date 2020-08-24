@@ -15,7 +15,7 @@ class Player{
   }
 
 
-void applyForce(PVector force) 
+  void applyForce(PVector force) 
   {
     acc.add(force); 
   }
@@ -25,15 +25,14 @@ void applyForce(PVector force)
     applyForce(gravity); //applies downward gravity
     pos.add(vel); // in order to update pos wrt velocity
     if(pos.y >=height-170) 
-    {
-        pos.y=height-170;
-        vel.mult(0);
-    }
+      {
+          pos.y=height-170;
+          vel.mult(0);
+      }
     else if(pos.y <=height-250)
-    {
-        //pos.y=height-115;
-        vel.mult(0);
-    }
+      {
+          vel.mult(0);
+      }
     
     vel.add(acc); //in order to update the vel as per acc
     vel.limit(4); // in order to cap the vel for a smooth run
