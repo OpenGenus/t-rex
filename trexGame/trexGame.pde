@@ -1,5 +1,6 @@
 Player b;
 int score=0;
+int highScore=0;
 boolean safe=true;
 PVector gravity = new PVector(0, 0.1);
 ArrayList<Barrier> barriers = new ArrayList<Barrier>();
@@ -63,11 +64,20 @@ void draw(){
     }
     else
     {
-      score-=50;
+      score=0;
+      text("RESTART",width/2-300,50);
     }
+    
     fill(16,53,201);
-    textSize(64);
+    textSize(32);
     score=constrain(score,0,score);
+    text("Score",width/2-100,50);
     text(score,width/2,50);
+    if(highScore < score)
+    {
+      highScore = score;
+    }
+    text(highScore,width/2+310,50);
+    text("High Score",width/2+300-170,50);
   
 }
