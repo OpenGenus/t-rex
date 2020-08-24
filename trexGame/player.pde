@@ -1,13 +1,14 @@
 class Player{
   
-  PVector pos;
-  PVector acc;
-  PVector vel;  
+  PVector pos; //This contains position of player
+  PVector acc; //This contains acceleration of player
+  PVector vel;  //This contains velocity of player
 
-  float r=40; 
+  float r=40; ////This contains radius of player object
   
   Player()
   {
+    //initialise the player data members
     pos = new PVector(50,(height-200));
     vel = new PVector(0, 20);
     acc = new PVector();
@@ -16,14 +17,14 @@ class Player{
 
 void applyForce(PVector force) 
   {
-    acc.add(force);
+    acc.add(force); 
   }
   
   void update() 
   {
-    applyForce(gravity);
-    pos.add(vel); // in order to update  pos wrt velocity
-    if(pos.y >=height-170)
+    applyForce(gravity); //applies downward gravity
+    pos.add(vel); // in order to update pos wrt velocity
+    if(pos.y >=height-170) 
     {
         pos.y=height-170;
         vel.mult(0);
@@ -45,7 +46,7 @@ void applyForce(PVector force)
     fill(255,0,34);
     stroke(0,0,0);
     strokeWeight(2);
-    imageMode(CORNER);
+    imageMode(CORNER); 
     image(pl, pos.x,pos.y,r*2,r*2);
     
   }
