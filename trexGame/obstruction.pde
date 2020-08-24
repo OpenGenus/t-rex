@@ -12,7 +12,10 @@ class Barrier {
   }
   void update ()
   {
-    x -= barrier_speed;
+    if(start)
+    {
+      x -= barrier_speed;
+    }
   }
   
   boolean hits(Player b)
@@ -21,16 +24,21 @@ class Barrier {
   }
   void show(boolean hit)
   {
-    if(hit)
-    {
-      fill(217,74,30,127);
-    }
-    else
-    {
-      fill(65,224,129,127);
-    }
-    stroke(0,0,0);
-    strokeWeight(2);
-    rect(x, height - bottom, w, bottom-110);
+      if(start)
+      {
+        if(hit)
+        {
+          fill(217,74,30,127);
+        }
+        else
+        {
+          fill(65,224,129,127);
+        }
+        stroke(0,0,0);
+        strokeWeight(2);
+        rect(x, height - bottom, w, bottom-110);
+      
+      }
+    
   }
 }

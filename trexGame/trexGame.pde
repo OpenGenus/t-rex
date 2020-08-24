@@ -2,6 +2,7 @@ Player b;
 int score=0;
 int highScore=0;
 boolean safe=true;
+boolean start=false;
 PVector gravity = new PVector(0, 0.1);
 ArrayList<Barrier> barriers = new ArrayList<Barrier>();
 int wid = 1100;
@@ -16,17 +17,22 @@ void setup()
 
 void draw(){
   rect(0, height-50, width, 15);
-    if(random(1)<0.5&&frameCount % 60 == 0)
+  if(start)
   {
-    barriers.add(new Barrier()); 
+    if(random(1)<0.5&&frameCount % 60 == 0)
+    {
+      barriers.add(new Barrier()); 
+    }
   }
+    
+    
  if(keyPressed)
   {
+    start = true;
     if(b.pos.y == height-170)
     {
       PVector up = new PVector(0,-100);
       b.applyForce(up);
-      //jump=true;
     }
     
   }
@@ -58,14 +64,15 @@ void draw(){
     
   }
   
-  if(safe)
+  if(safe&&start)
     {
       score++;
     }
     else
     {
       score=0;
-      text("RESTART",width/2-300,50);
+      text("CLICK TO START",width/2-500,50);
+      start=false;
     }
     
     fill(16,53,201);
